@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.snackbar.Snackbar
 import com.techflitter.myapplicationgit.databinding.ItemDataBinding
 import com.techflitter.myapplicationgit.model.PicSumModelItem
 import com.techflitter.myapplicationgit.utils.Constants
@@ -82,7 +81,7 @@ class PicSumDataAdapter(
         return ViewHolder(view)
     }
 
-    inner class ViewHolder(val binding: ItemDataBinding) :
+    inner class ViewHolder(private val binding: ItemDataBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         @OptIn(DelicateCoroutinesApi::class)

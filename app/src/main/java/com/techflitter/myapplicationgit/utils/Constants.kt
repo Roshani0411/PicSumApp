@@ -114,25 +114,6 @@ object Constants {
                     }
 
                     if(isSetImage){
-                        Log.d(
-                            "loadImagesinGlide",
-                            "loadMediainGlide 00000000000000000000111 isSetImage - pos=$pos vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv"
-                        )
-                        Log.d(
-                            "loadImagesinGlide",
-                            "loadMediainGlide 00000000000000000000121 Drawable  - pos=$pos - height ${resource?.intrinsicHeight} and wight ${resource?.intrinsicWidth} && resources?.getDimension${mContext.resources?.getDimension(
-                                com.intuit.sdp.R.dimen._180sdp)}"
-                        )
-
-                        /* GlobalScope.launch {
-                             setImageHeightWidth(resource, imageView)
-                         }*/
-
-                        Log.d(
-                            "loadImagesinGlide",
-                            "loadMediainGlide 00000000000000000000112 onResourceReady: if"
-                        )
-
                         // MANAGE FIX HEIGHT FOR MIN HEIGHT REQUIREMENT
                         if (resource?.intrinsicHeight!! >= resource.intrinsicWidth) {
                             Log.d(
@@ -145,25 +126,10 @@ object Constants {
                             val viewHeight: Float = imageView.height.toFloat()
                             val drawableWidth = resource.intrinsicWidth
                             val drawableHeight = resource.intrinsicHeight
-                            Log.d(
-                                "loadImagesinGlide",
-                                "loadMediainGlide 000000000000000000001131 viewHeight=$viewHeight - viewWidth=$viewWidth"
-                            )
-                            Log.d(
-                                "loadImagesinGlide",
-                                "loadMediainGlide 000000000000000000001132 drawableHeight=$drawableHeight - drawableWidth=$drawableWidth"
-                            )
-
-
                             val widthScale = viewWidth / drawableWidth
                             val heightScale = viewHeight / drawableHeight
                             val scale = widthScale.coerceAtLeast(heightScale)
-
-                            Log.d(
-                                "loadImagesinGlide",
-                                "loadMediainGlide 000000000000000000001133 scale=$scale - heightScale=$heightScale - widthScale=$widthScale"
-                            )
-                            val baseMatrix: Matrix = Matrix()
+                            val baseMatrix = Matrix()
                             baseMatrix.reset()
                             baseMatrix.postScale(scale, scale)
                             imageView.imageMatrix = baseMatrix
@@ -182,23 +148,12 @@ object Constants {
                             imageView.scaleType = ImageView.ScaleType.CENTER_CROP
                             imageView.layoutParams.height = mContext!!.resources.getDimensionPixelOffset(
                                 com.intuit.sdp.R.dimen._180sdp)
-//                            imageView.layoutParams.width =
-//                                mContext!!.resources.getDimensionPixelOffset(R.dimen._280sdp)
                         }
-                        //////////////////////////////////////////////// ------------------
                         Log.d(
                             "loadImagesinGlide",
                             "loadMediainGlide 0000000000000000000011111111111 - pos=$pos ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
                         )
                     }
-                    else{
-
-                        Log.d(
-                            "loadImagesinGlide",
-                            "loadMediainGlide 00000000000000000000115 isSetImage is false"
-                        )
-                    }
-
                     return false
                 }
             })
@@ -247,7 +202,7 @@ object Constants {
         dialogType: String? = "SUCCESS",
     ) {
         try {
-            var dialogMsg = MessageDialog.getInstance()
+            val dialogMsg = MessageDialog.getInstance()
             val bundle = Bundle()
             bundle.putString("okTxt", "OK")
             bundle.putString("tvMsgText", msg)
